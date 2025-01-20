@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MeuAplicativo());
+  runApp(const App());
 }
 
-class MeuAplicativo extends StatelessWidget {
-  const MeuAplicativo({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class MeuAplicativo extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(title: 'Segundo Programa (Layout)'),
+      home: const HomePage(title: 'Programa Layout'),
     );
   }
 }
@@ -42,22 +42,69 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.title),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              'Primeira linha',
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                // color: Colors.amber,
+                child: const Text('Layout Superior'),
+              ),
             ),
-            Text(
-              'Segunda linha',
+            Expanded(
+              flex: 7,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Container(
+                        // alignment: Alignment.center,
+                        // color: Colors.red,
+                        // child: const Text('Primeira Coluna'),
+                        ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1,
+                        ),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 10,
+                            offset: Offset(5, 5),
+                          ),
+                        ],
+                      ),
+                      child: const Text('Meu Aplicativo'),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                        // alignment: Alignment.center,
+                        // color: Colors.red,
+                        // child: const Text('Terceira Coluna'),
+                        ),
+                  ),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('Terceira linha')
-                Text('Quarta linha')
-              ],)
+            Expanded(
+              flex: 2,
+              child: Container(
+                alignment: Alignment.center,
+                //color: Colors.blue,
+                child: const Text('Layout Inferior'),
+              ),
+            ),
           ],
         ),
       ),
